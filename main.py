@@ -39,7 +39,7 @@ def train(model):
             data = utils.to_var(data)
             ret = model.run_on_batch(data, optimizer)
 
-            run_loss += ret['loss'].data[0]
+            run_loss += ret['loss'].data
 
             print '\r Progress epoch {}, {:.2f}%, average loss {}'.format(epoch, (idx + 1) * 100.0 / len(data_iter), run_loss / (idx + 1.0)),
 
