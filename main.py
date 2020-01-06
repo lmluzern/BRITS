@@ -79,8 +79,12 @@ def evaluate(model, val_iter):
 
     labels = np.asarray(labels).astype('int32')
     preds = np.asarray(preds)
-
-    print 'AUC {}'.format(metrics.roc_auc_score(labels, preds))
+    
+    try:
+        print 'AUC {}'.format(metrics.roc_auc_score(labels, preds))
+    
+    except ValueError:
+        print('')
 
     evals = np.asarray(evals)
     imputations = np.asarray(imputations)
@@ -89,12 +93,16 @@ def evaluate(model, val_iter):
     print 'MRE', np.abs(evals - imputations).sum() / np.abs(evals).sum()
 
 def run():
+    start = time.time()
+    
     model = getattr(models, args.model).Model()
 
     if torch.cuda.is_available():
         model = model.cuda()
 
     train(model)
-
+    
+    end = time.time()
+    print 'Elapsed time in seconds:',end - start
 if __name__ == '__main__':
     run()
