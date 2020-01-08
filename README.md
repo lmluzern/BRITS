@@ -1,5 +1,5 @@
 # Description
-The source codes of RITS-I, RITS, BRITS-I, BRITS for health-care data imputation/classification
+The source codes of RITS-I, RITS, BRITS-I, BRITS for imputation/classification.
 
 ## Requirements
 Note that Python 2 is required, I used Python 2.7.17. I had to install several packages first.
